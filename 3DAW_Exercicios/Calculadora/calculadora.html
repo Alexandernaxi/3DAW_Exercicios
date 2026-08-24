@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+<body>
+    <!--Texto que aparece centralizado no topo da página-->
+    <h2><center>Preencha as informações para o cálculo</center></h2>
+
+    <!--Formulário para preencher para o cálculo-->
+    <form action="calc.php" method="GET" name="calculo">
+        <!--Pegando a informação dos dois números para o cálculo-->
+        <label for="number1">Primeiro Número: </label>
+        <input type="text" id="fnumber" name="fnumber"><br>
+        <label for="number2">Segundo Número: </label>
+        <input type="text" id="lnumber" name="lnumber"><br>
+
+        <!--Pegando a informação da operação do cálculo-->
+        <h4>Operação: </h4>
+        <input type="radio" id="+" name="operação" value="+">
+        <label for="+">+</label><br>
+        <input type="radio" id="-" name="operação" value="-">
+        <label for="-">-</label><br>
+        <input type="radio" id="*" name="operação" value="*">
+        <label for="*">*</label><br>
+        <input type="radio" id="/" name="operação" value="/">
+        <label for="/">/</label><br><br>
+
+        <!--Botão de enviar-->
+        <input type="submit" value="Enviar">
+    </form>
+
+</body>
+</html>
