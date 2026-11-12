@@ -5,20 +5,23 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
     $op = $_GET["op"];
 
     switch ($op) {
-        case '+';
+        case '+':
             $resultado = $v1 + $v2;
             break;
-        case '-';
+        case '-':
             $resultado = $v1 - $v2;
             break;
-        case '*';
+        case '*':
             $resultado = $v1 * $v2;
             break;
-        case '/';
+        case '/':
             $resultado = $v1 / $v2;
+            break;
+        default:
+            $resultado = "Não foi possível realizar a operaçao.";
             break;
     }
 
-    echo $resultado;
+    echo json_encode(["resultado" => $resultado]);
 }
 ?>
