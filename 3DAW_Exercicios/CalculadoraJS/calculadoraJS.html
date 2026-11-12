@@ -32,7 +32,8 @@
             
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4 && xhr.status == 200) {
-                    document.getElementById("resultado").innerText = "Resultado: " + xhr.responseText;
+                    let resposta = JSON.parse(xhr.responseText);
+                    document.getElementById("resultado").innerText = "Resultado: " + resposta.resultado;
                 }
             };
 
