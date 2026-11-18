@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Uma Pergunta</title>
+</head>
+<body>
+    <h1><center>Listar uma Pergunta</center></h1>
+
+    <form id="formulario">
+        ID da Pergunta: <input type="text" id="id">
+        <button type="button" onclick="buscarPergunta()">Buscar</button>
+    </form>
+
+    <div id="resultado" style="margin-top: 15px;"></div>
+
+    <script>
+        function buscarPergunta() {
+            let id = document.getElementById("id").value;
+            let url = "php/listar_1pergunta.php?id=" + encodeURIComponent(id);
+
+            let xhr = new XMLHttpRequest();
+            
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById("resultado").innerHTML = xhr.responseText;
+                }
+            };
+
+            xhr.open("GET", url, true);
+            xhr.send();
+        }
+    </script>
+
+    <br>
+    <a href="criar_perguntas.html">Voltar</a>
+</body>
+</html>

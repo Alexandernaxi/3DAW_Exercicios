@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar Perguntas</title>
+</head>
+<body>
+    <h1><center>Alterar Perguntas</center></h1>
+
+    <form id="formulario">
+        ID da Pergunta que deseja alterar: <input type="text" id="id"><br>
+        Nova Pergunta: <input type="text" id="pergunta"><br>
+        Questao1: <input type="text" id="questao1"><br>
+        Questao2: <input type="text" id="questao2"><br>
+        Questao3: <input type="text" id="questao3"><br>
+        Questao4: <input type="text" id="questao4"><br>
+        Nova Resposta: <input type="text" id="resposta"><br>
+        <br><button type="button" onclick="alterarPergunta()">Alterar</button>
+    </form>
+
+    <h3 id="mensagem"></h3>
+
+    <script>
+        function alterarPergunta() {
+            let id = document.getElementById("id").value;
+            let pergunta = document.getElementById("pergunta").value;
+            let questao1 = document.getElementById("questao1").value;
+            let questao2 = document.getElementById("questao2").value;
+            let questao3 = document.getElementById("questao3").value;
+            let questao4 = document.getElementById("questao4").value;
+            let resposta = document.getElementById("resposta").value;
+
+            let url = "php/alterar_perguntas.php?id=" + encodeURIComponent(id) + "&pergunta=" + encodeURIComponent(pergunta) + "&questao1=" + encodeURIComponent(questao1) + 
+            "&questao2=" + encodeURIComponent(questao2) + "&questao3=" + encodeURIComponent(questao3) + "&questao4=" + encodeURIComponent(questao4) + "&resposta=" + encodeURIComponent(resposta);
+
+            let xhr = new XMLHttpRequest();
+            
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById("mensagem").innerText = xhr.responseText;
+                    document.getElementById("formulario").reset();
+                }
+            };
+
+            xhr.open("GET", url, true);
+            xhr.send();
+        }
+    </script>
+
+    <br><a href="criar_perguntas.html">Voltar</a>
+</body>
+</html>
